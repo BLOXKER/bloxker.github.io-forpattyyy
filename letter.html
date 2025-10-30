@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: #fff0f6;
+      color: #333;
+      text-align: center;
+    }
+    #secretScreen, #mainScreen {
+      display: none;
+      padding: 40px;
+    }
+    #secretScreen.active, #mainScreen.active {
+      display: block;
+    }
+    #codeInput {
+      font-size: 24px;
+      padding: 10px;
+      width: 200px;
+    }
+    h1 { font-size: 36px; color: #c2185b; }
+    h2 { font-size: 28px; color: #ad1457; }
+    .section {
+      margin: 40px 0;
+    }
+    .gallery img {
+      width: 150px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="secretScreen" class="active">
+  <h2>Enter the secret code</h2>
+  <input type="password" id="codeInput" placeholder="Secret code">
+  <button id="enterButton">Enter</button>
+</div>
+
+<div id="mainScreen">
+  <h1>Welcome my love, enjoy your stay ❤️</h1>
+
+  <nav>
+    <button class="navBtn" data-section="letterSection">Love Letter</button>
+    <button class="navBtn" data-section="musicSection">Music</button>
+    <button class="navBtn" data-section="notesSection">Notes</button>
+    <button class="navBtn" data-section="gallerySection">Gallery</button>
+  </nav>
+
+  <div id="letterSection" class="section">
+    <h2>My Dearest</h2>
+    <h3>A Letter For You</h3>
+    <p>My love,<br>
+       Every day with you feels like a beautiful dream that I never want to wake up from. Your smile brightens my darkest days, and your laughter is my favorite melody.<br><br>
+       I cherish every moment we spend together, from our silly inside jokes to our deep conversations under the stars. You've shown me what true happiness feels like, and I'm forever grateful to have you in my life.<br><br>
+       No matter where life takes us, always remember that my heart belongs to you.<br><br>
+       Forever yours,<br>
+       Me
+    </p>
+  </div>
+
+  <div id="musicSection" class="section" style="display:none;">
+    <h2>Songs that remind me of you</h2>
+    <h4>Hiwaga by Tatin DC</h4>
+    <h4>Wish by 16</h4>
+  </div>
+
+  <div id="notesSection" class="section" style="display:none;">
+    <h2>Some reminders</h2>
+    <p>Take care always<br>Eat on time<br>You're mine.. always</p>
+  </div>
+
+  <div id="gallerySection" class="section" style="display:none;">
+    <h2>Flowers for you</h2>
+    <div class="gallery">
+      <img src="https://jamxzs.github.io/foryoumylove/0.jpg" alt="flower1">
+      <img src="https://jamxzs.github.io/foryoumylove/1.jpg" alt="flower2">
+      <img src="https://jamxzs.github.io/foryoumylove/2.jpg" alt="flower3">
+      <img src="https://jamxzs.github.io/foryoumylove/3.jpg" alt="flower4">
+      <img src="https://jamxzs.github.io/foryoumylove/4.jpg" alt="flower5">
+      <img src="https://jamxzs.github.io/foryoumylove/5.jpg" alt="flower6">
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const secretScreen = document.getElementById('secretScreen');
+  const mainScreen = document.getElementById('mainScreen');
+  const enterButton = document.getElementById('enterButton');
+  const codeInput = document.getElementById('codeInput');
+
+  // set your secret code here:
+  const SECRET = '1234';
+
+  enterButton.addEventListener('click', () => {
+    if (codeInput.value === SECRET) {
+      secretScreen.classList.remove('active');
+      mainScreen.classList.add('active');
+    } else {
+      alert('Wrong code, try again.');
+    }
+  });
+
+  const navBtns = document.querySelectorAll('.navBtn');
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sectionId = btn.getAttribute('data-section');
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+      document.getElementById(sectionId).style.display = 'block';
+    });
+  });
+</script>
+
+</body>
+</html>
