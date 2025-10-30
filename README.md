@@ -1,1 +1,1 @@
-# bloxker.github.io-forpattyyy
+# bloxker.github.io/forpattyyy
